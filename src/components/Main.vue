@@ -1,19 +1,24 @@
 <template>
     <main>
-        <div v-for="(filmInfo, index) in detailsSearch" :key="index" class="film">
-            <span>{{ filmInfo.title }}</span>
-            <span>{{ filmInfo.original_title }}</span>
-            <span>{{ filmInfo.original_language }}</span>
-            <span>{{ filmInfo.vote_average }}</span>
-        </div>
+        <h2>Films</h2>
+        <FilmCard v-for="filmInfo in detailsSearchMovies" :key="filmInfo.id" :detailsSearch="filmInfo"/>
+
+        <h2>Series TV</h2>
+        <FilmCard v-for="seriesTVInfo in detailsSearchSeriesTV" :key="seriesTVInfo.id" :detailsSearch="seriesTVInfo"/>
     </main>
 </template>
 
 <script>
+import FilmCard from "./FilmCard.vue";
+
 export default {
     name: 'Main',
+    components: {
+        FilmCard
+    },
     props: {
-        detailsSearch: Array
+        detailsSearchMovies: Array,
+        detailsSearchSeriesTV: Array
     }
 }
 </script>
@@ -23,13 +28,9 @@ export default {
         display: flex;
         width: 60%;
         margin: auto;
+        flex-direction: column;
         flex-wrap: wrap;
 
-        .film {
-            min-width: calc(100% / 5);
-            margin: 10px;
-            display: flex;
-            flex-direction: column;
-        }
+        
     }
 </style>
