@@ -1,8 +1,13 @@
 <template>
     <header>
-        <div>
-            <input v-model="searchText" type="text">
-            <button @click="$emit('searchNameFilm', searchText )">Cerca</button>
+        <div class="container">
+            <div class="logo">
+                <img src="../assets/img/Netflix_2015_logo.svg" alt="">
+            </div>
+            <div>
+                <input v-model="searchText" type="text">
+                <button @click="$emit('searchNameFilm', searchText )">Cerca</button>
+            </div>
         </div>
     </header>
 </template>
@@ -19,11 +24,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../style/Common.scss";
+
     header{
-        height: 100px;
-        background-color: black;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        height: 55px;
+        background-color: #000;
+        
+
+        .container{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+
+            .logo{
+                img{
+                    width: 13%;
+                }
+            }
+        }
     }
 </style>
